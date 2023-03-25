@@ -1,6 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
-#include "main.h"
+#include "../main.h" /*using #include "../main.h" 1 level above in directory*/
 
 /**
  * main - Entry point
