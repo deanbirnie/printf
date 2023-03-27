@@ -1,20 +1,20 @@
 #include "main.h"
 
-/*
- * This function, named print_string, is used to print a string. It takes in a list of arguments.
- * 
- * @list: the list of arguments passed to the function
- * 
- * The function returns an integer value which indicates the number of characters printed.
- */
-int print_string(va_list list)
-{
-    /* Declare a counter variable i and a char pointer str */
-    int i;
-    char *str;
+#include <stdio.h>
 
-    /* Get the next argument from the va_list as a char pointer */
-    str = va_arg(list, char *);
+/*
+ * This function, named print_string, is used to print a string. It takes in a
+ * char pointer.
+ *
+ * @str: the string to print
+ *
+ * The function returns an integer value which indicates the number of
+ * characters printed.
+ */
+int print_string(char *str)
+{
+    /* Declare a counter variable i */
+    int i;
 
     /* If the string is null, then print a default string */
     if (str == NULL)
