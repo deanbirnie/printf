@@ -17,12 +17,12 @@ int _printf(const char *format, ...);
 /* This function prints a string argument to the standard output and
  * returns the number of characters printed.
  */
-int print_string(va_list arg_list);
+int print_string(char *str);
 
 /* This function prints an integer argument to the standard output and
  * returns the number of characters printed.
  */
 int print_integer(va_list arg_list);
-
+void print_number(int num);
 #endif
 
