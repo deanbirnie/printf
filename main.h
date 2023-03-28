@@ -1,45 +1,57 @@
-#ifndef MAIN_H /* Header guard to prevent multiple inclusions of this header */
+#ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h> /* Required for using variable argument lists with va_list, va_start, va_arg, and va_end */
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <limits.h>
 
-/* Function prototypes */
+#define NULL_STRING "(null)"
+#define NUL '\0'
 
-int _putchar(char c);
-/*
- * Writes a character to stdout.
- * Returns the number of characters written on success, -1 on failure.
+/**
+ * struct convert - defines a structure for symbols and functions
+ *
+ * @sym: The operator
+ * @f: The function associated
  */
+
+struct convert
+{
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert conver_t;
+
 
 int _printf(const char *format, ...);
-/*
- * Receives the main string and all the necessary parameters to print a formatted string.
- * Returns a total count of the characters printed.
- */
+int _putchar(char c);
+int format_reciever(const char *format, conver_t f_list[], va_list arg_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_char(va_list);
+int print_string(va_list);
+int print_binary(va_list);
+int print_unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_HEX_D(va_list list);
+int print_String_EX(va_list val);
+int print_pointer(va_list val);
+int print_rev(va_list l);
+int print_rot13(va_list list);
 
-int print_char(va_list args);
-/*
- * Prints a single character from the variable argument list.
- * Returns the number of characters printed.
- */
-
-int print_string(va_list args);
-/*
- * Prints a string of characters from the variable argument list.
- * Returns the number of characters printed.
- */
-
-int print_percent(va_list args);
-/*
- * Prints a '%' character.
- * Returns the number of characters printed.
- */
-
-int print_int(va_list args);
-/*
- * Prints a decimal (base 10) integer from the variable argument list.
- * Returns the number of characters printed.
- */
-
-#endif /* MAIN_H */
+int print_number(va_list args);
+unsigned int base_len(unsigned int, int);
+char *rev_string(char *);
+void write_base(char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int print_unsgined_number(unsigned int n);
+int hex_check(int num, char x);
+int print_hex_aux(unsigned long int num);
+int isNonAlphaNumeric(char c); 
+int _puts(char *str);
+char *convert(unsigned long int num, int base, int lowercase);
+#endif
 
