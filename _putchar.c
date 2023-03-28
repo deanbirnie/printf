@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * _putchar - writes the character c to stdout
@@ -9,20 +9,24 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+    return (write(1, &c, 1));
 }
-
 
 /**
  * _puts - prints a string to stdout
  * @str: pointer to the string to print
- * Return: number of chars written
+ *
+ * Return: The number of characters written to stdout
  */
 int _puts(char *str)
 {
-	register short i;
+    register short i;
 
-	for (i = 0; str[i]; i++)
-		_putchar(str[i]);
-	return (i);
+    /* Loop through each character in the string and print it using _putchar */
+    for (i = 0; str[i]; i++)
+        _putchar(str[i]);
+
+    /* Return the number of characters written */
+    return (i);
 }
+
