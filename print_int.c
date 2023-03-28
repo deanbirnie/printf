@@ -1,67 +1,60 @@
 #include "main.h"
 
 /**
- * print_integer - Function to print an integer
+ * print_integer - Prints an integer
  * @list: list of arguments
- * Return: Will return the number of characters printed.
+ * Return: Will return the amount of characters printed.
  */
-/* This function prints an integer, and takes in a va_list argument list */
 int print_integer(va_list list)
 {
-	/* Declaring an integer variable num_length to store the number of characters printed */
+	/* Calls print_number function and returns its output */
 	int num_length;
-
-	/* Calling the print_number() function to print the integer value, and storing the number of characters printed in num_length */
 	num_length = print_number(list);
-
-	/* Return the value of num_length */
 	return (num_length);
 }
 
+
 /**
- * print_number - Function to print a number
+ * print_number - prints a number send to this function
  * @args: List of arguments
  * Return: The number of arguments printed
  */
-/* This function prints a number, and takes in a va_list argument args */
 int print_number(va_list args)
 {
-	/* Declaring integer variables n, div, len and unsigned integer variable num */
-	int n; /* n is the number that needs to be printed */
-	int div; /* div is used to find the divisor to get the leftmost digit */
-	int len; /* len stores the number of characters printed */
-	unsigned int num; /* num stores the absolute value of the number n */
+	int n; /* integer argument to print */
+	int div; /* divisor to get each digit */
+	int len; /* length of the integer when converted to string */
+	unsigned int num; /* to handle negative numbers */
 
-	/* Initializing the value of n to the argument passed through va_arg */
+	/* Get integer argument from the argument list */
 	n  = va_arg(args, int);
 
-	/* Initializing the values of div and len to 1 and 0 respectively */
 	div = 1;
 	len = 0;
 
-	/* If n is negative, print a '-' and multiply n by -1 and assign it to num */
+	/* Handle negative numbers */
 	if (n < 0)
 	{
-		len += _putchar('-'); /* Print the negative sign */
-		num = n * -1; /* Get the absolute value of the number */
+		/* Print negative sign and multiply number by -1 to make it positive */
+		len += _putchar('-');
+		num = n * -1;
 	}
-	/* If n is positive, assign n to num */
 	else
 		num = n;
 
-	/* Loop to find the divisor which can divide the given number to get the leftmost digit */
+	/* Calculate divisor */
 	for (; num / div > 9; )
 		div *= 10;
 
-	/* Loop to print the digits of the number starting from the leftmost digit */
+	/* Print each digit of the number */
 	for (; div != 0; )
 	{
-		len += _putchar('0' + num / div); /* Print the leftmost digit */
-		num %= div; /* Get the remainder */
-		div /= 10; /* Get the divisor for the next digit */
+		len += _putchar('0' + num / div); /* print digit */
+		num %= div; /* get next digit */
+		div /= 10; /* update divisor */
 	}
-
-	/* Return the value of len, which is the number of characters printed */
+	
+	    /* Return the number of characters printed */
 	return (len);
 }
 
